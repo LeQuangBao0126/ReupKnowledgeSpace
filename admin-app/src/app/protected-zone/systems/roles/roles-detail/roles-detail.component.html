@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{dialogTitle}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form class="form-horizontal form-label-left" novalidate [formGroup]="entityForm">
+    <div class="modal-body div-scroll">
+        <p-panel #pnl header="Thông tin" [toggleable]="true" [collapsed]="false" styleClass="m-b-10">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                <div class="grid">
+                    <div class=" col-6">
+                        <span class="d-inline-block">Mã:</span>
+                        <input type="text" pInputText pKeyFilter="alphanum" formControlName="id">
+                    </div>
+                    <div class=" col-6">
+                        <app-validation-message [entityForm]="entityForm" fieldName="id"
+                            [validationMessages]="validation_messages"></app-validation-message>
+                    </div>
+                </div>
+                <div class="grid ">
+                    <div class="col-6">
+                        <span class="required">Tên:</span>
+                        <input type="text" pInputText pKeyFilter="alphanum" formControlName="name">
+                    </div>
+                    <div class="col-6">
+                        <app-validation-message [entityForm]="entityForm" fieldName="name"
+                            [validationMessages]="validation_messages"></app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <p-blockUI [target]="pnl" [blocked]="blockedPanel">
+                <p-progressSpinner [style]="{width: '100px', height: '100px', position:'absolute',top:'25%',left:'50%'}"
+                    strokeWidth="2" animationDuration=".5s"></p-progressSpinner>
+            </p-blockUI>
+        </p-panel>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="saveChange()" class="btn btn-primary" [disabled]="entityForm.invalid">
+           <i class=" fa fa-close text-red" *ngIf="entityForm.invalid"></i>
+            Lưu lại</button>
+        &nbsp;
+        <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Đóng</button>
+    </div>
+</form>

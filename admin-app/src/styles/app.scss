@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+@media print {
+    .breadcrumb {
+        display: none !important;
+    }
+}
+ 
+html {
+    font-size: 16px;
+    
+}
+.p-panel {
+    .p-panel-header{
+        padding:0.4rem;
+    }
+    .p-panel-content{
+        padding:0.4rem;
+    }
+}
+.p-datatable .p-datatable-thead > tr > th{
+    padding: .5rem .5rem;
+}
+.p-datatable .p-datatable-tbody > tr > td{
+    padding: .5rem .5rem;
+}
+.p-treetable .p-treetable-thead > tr > th{
+    padding:.5rem;
+}
+.p-treetable-scrollable-body>table>.p-treetable-tbody>tr>td{
+    padding:.5rem;
+}
+.p-datatable-scrollable-body>table>.p-datatable-tbody>tr>td{
+    padding:.5rem;
+}

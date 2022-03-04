@@ -1,0 +1,74 @@
+﻿@model HomeViewModel
+@{ ViewData["Title"] = "Home Page"; }
+<div class="container">
+    <div class="row">
+
+        <!-- start of page content -->
+        <div class="span8 page-content">
+            <!-- Basic Home Page Template -->
+            <div class="row separator">
+                <section class="span4 articles-list">
+                    <h3>Popular KnowledgeBases</h3>
+                    <ul class="articles">
+                        @if (Model !=null && Model.PopularKnowledgeBases != null)
+                        {
+                            foreach (var item in Model.PopularKnowledgeBases)
+                            {
+                                var url = "/kb/"+item.SeoAlias+"-"+item.Id;
+                            <li class="article-entry standard">
+                                <h4><a href="@url">@item.Title</a></h4>
+                                <span class="article-meta">
+                                    Đi vào danh mục :
+                                    <a href="#" title="View all posts in Website Dev">@item.CategoryId</a>
+                                </span>
+                                <span class="like-count">Lượt thích : 10</span>
+                            </li>
+                            }
+                        }
+                    </ul>
+                </section>
+
+                
+            </div>
+        </div>
+        <!-- end of page content -->
+        <!-- start of sidebar -->
+        <aside class="span4 page-sidebar">
+
+            <section class="widget">
+                <div class="support-widget">
+                    <h3 class="title">Support</h3>
+                    <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
+                </div>
+            </section>
+
+            <section class="widget">
+                <div class="quick-links-widget">
+                    <h3 class="title">Liên Kết</h3>
+                    <ul id="menu-quick-links" class="menu clearfix">
+                        <li><a href="faq.html">OkBao chấm com</a></li>
+                        <li><a href="contact.html">Diễn Đàn</a></li>
+                        <li><a href="contact.html">Youtube Channel</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="widget">
+                <h3 class="title">Popular Tags</h3>
+                <div class="tagcloud">
+                    @if (Model != null && Model.PopularLabels != null)
+                    {
+                        foreach (var tag in Model.PopularLabels)
+                        {
+        <a href="#" class="btn btn-mini">@tag.Name</a> }
+}
+else
+{
+<p>Hiện tại chưa c1ó label nào</p>}
+                </div>
+            </section>
+
+        </aside>
+        <!-- end of sidebar -->
+    </div>
+</div>
